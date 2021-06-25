@@ -54,6 +54,10 @@
   <buildtool_depend>catkin</buildtool_depend>
   <depend>roscpp</depend>
   <depend>pp_msgs</depend>
+  <depend>pcl_ros</depend>
+  <depend>std_msgs</depend>
+  <build_depend>libpcl-all-dev</build_depend>
+  <exec_depend>libpcl-all</exec_depend>
 
 
   <!-- The export tag contains other, unspecified, tags -->

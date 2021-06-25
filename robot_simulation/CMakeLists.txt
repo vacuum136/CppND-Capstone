@@ -10,6 +10,9 @@ project(robot_simulation)
 find_package(catkin REQUIRED
   roscpp
   pp_msgs
+  pcl_ros
+  pcl_conversions
+  std_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -104,7 +107,7 @@ find_package(catkin REQUIRED
 catkin_package(
   INCLUDE_DIRS include
 #  LIBRARIES robot_simulation
-  CATKIN_DEPENDS roscpp pp_msgs
+  CATKIN_DEPENDS roscpp pp_msgs std_msgs pcl_ros
 #  DEPENDS system_lib
 )
 
@@ -132,7 +135,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-add_executable(path_planner_server src/path_planner_server.cpp src/path_planner.cpp)
+add_executable(path_planner_server src/path_planner_server.cpp src/path_planner.cpp src/expand_visual.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the

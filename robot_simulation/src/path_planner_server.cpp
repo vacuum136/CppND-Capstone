@@ -2,14 +2,15 @@
 #include <pp_msgs/PathPlanningPlugin.h>
 #include <geometry_msgs/Twist.h>
 #include <robot_simulation/path_planner.h>
+#include <robot_simulation/expand_visual.h>
 
 // callback function of the path planning service whichi processes the request from clients and response with path if found
 bool makePlan(pp_msgs::PathPlanningPlugin::Request &req, pp_msgs::PathPlanningPlugin::Response &res)
 {
   float resolution = 0.2;
   Point origin{-7.4, -7.4, 0};
-  PathPlanner path_planer = PathPlanner(req.start, req.goal, req.costmap_ros, req.width, req.height, resolution, origin);
-
+  ExpandVisual expandviz = ExpandVisual(req.costmap_ros,resolution,origin,req.start,req.goal,req.width);
+  PathPlanner path_planer = PathPlanner(req.start, req.goal, req.costmap_ros, req.width, req.height, resolution, &expandviz);
   ros::Time start_time = ros::Time::now();
 
   // calculate the path using astar

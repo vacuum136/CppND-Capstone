@@ -3,9 +3,84 @@
 
 PathPlanner::PathPlanner
   (int start, int goal, std::vector<int> &costmap, 
-   int width, int height, float resolution, Point origin) : 
+   int width, int height, float resolution, ExpandVisual *ev) : 
    start_index_(start), goal_index_(goal), costmap_(costmap), 
-  costmap_width_(width), costmap_height_(height), resolution_(resolution), origin_(origin){}
+  costmap_width_(width), costmap_height_(height), resolution_(resolution), expandviz_(ev){}
+
+bool PathPlanner::AStarSearch(){
+  // open list to store the index to be checked
+  std::vector<Index> open_list{};
+  // store the index checked
+  std::set<int> close_list{};
+  // map between index and it's parents
+  std::unordered_map<int, int> parents{};
+  
+  open_list.emplace_back(start_index_, 0.f);
+
+  ROS_INFO("Path planner: initialization done");
+
+  // loop as long as there is index in open list
+  while(!open_list.empty()){
+    // get the index with lowest cost 
+    std::sort(open_list.begin(), open_list.end(),[](const Index &a, const Index &b){return (a.g_cost+a.h_cost) > (b.g_cost+b.h_cost);});
+    Index current = open_list.back();
+    open_list.pop_back();
+    // marked this index checked
+    close_list.insert(current.i);
+    expandviz_->setColor(current.i, "pale_yellow");
+    if(current.i == goal_index_){
+      ConstructFinalPath(current.i, parents);
+      break;
+    }  
+    
+    std::vector<Index> neighbors = findNeighbors(current.i);
+
+    for(Index &neighbor : neighbors){
+      if(close_list.count(neighbor.i)) continue;
+      // calculate new g_cost, neighbor'cost is only step cost for now
+      float g_cost = current.g_cost + neighbor.g_cost;
+      float h_cost = CalculateHValue(neighbor.i);
+
+      auto iter = std::find(open_list.begin(), open_list.end(), neighbor);
+      if(iter != open_list.end()){ // neighbor already in open list
+        if(g_cost < iter->g_cost){
+          // update the cost value of the index in open list
+          iter->g_cost = g_cost;
+          parents[iter->i] = current.i;
+        }
+      } else {
+        neighbor.g_cost = g_cost;
+        neighbor.h_cost = h_cost;
+        parents[neighbor.i] = current.i;
+        open_list.push_back(neighbor);
+        expandviz_->setColor(neighbor.i,"orange");
+      }
+    }
+    sleep(1);
+  }
+  return !path_.empty();
+}
+
+void PathPlanner::ConstructFinalPath(int current, std::unordered_map<int,int> &parents) {
+  // Create path_found vector
+  do
+  {
+    path_.push_back(current);
+    current = parents[current];
+  } while (current != start_index_);
+
+  path_.push_back(start_index_);
+
+  //reverse the founded path
+  std::reverse(path_.begin(),path_.end());
+}
+
+// Calculate H value
+float PathPlanner::CalculateHValue(int index) {
+	float x = index % costmap_width_, y = index / costmap_width_;
+  float goal_x = goal_index_ % costmap_width_, goal_y = goal_index_ / costmap_width_;
+  return (abs(goal_x - x) + abs(goal_y - y)) * resolution_; // step cost = resolution 
+}
 
 // find neighbors of current index
 std::vector<Index> PathPlanner::findNeighbors(int index){
@@ -73,79 +148,5 @@ std::vector<Index> PathPlanner::findNeighbors(int index){
 
   return neighbor;
 }
-
-// Calculate H value
-float PathPlanner::CalculateHValue(int index) {
-	float x = index % costmap_width_, y = index / costmap_width_;
-  float goal_x = goal_index_ % costmap_width_, goal_y = goal_index_ / costmap_width_;
-  return (abs(goal_x - x) + abs(goal_y - y)) * resolution_; // step cost = resolution 
-}
-
-bool PathPlanner::AStarSearch(){
-  // open list to store the index to be checked
-  std::vector<Index> open_list{};
-  // store the index checked
-  std::set<int> close_list{};
-  // map between index and it's parents
-  std::unordered_map<int, int> parents{};
-  
-  open_list.emplace_back(start_index_, 0.f);
-
-  ROS_INFO("Path planner: initialization done");
-
-  // loop as long as there is index in open list
-  while(!open_list.empty()){
-    // get the index with lowest cost 
-    //std::sort(open_list.begin(), open_list.end(),[](const Index &a, const Index &b){return (a.g_cost+a.h_cost) > (b.g_cost+b.h_cost);});
-    Index current = open_list.back();
-    open_list.pop_back();
-    // marked this index checked
-    close_list.insert(current.i);
-
-    if(current.i == goal_index_){
-      ConstructFinalPath(current.i, parents);
-      break;
-    }  
-    
-    std::vector<Index> neighbors = findNeighbors(current.i);
-
-    for(Index &neighbor : neighbors){
-      if(close_list.count(neighbor.i)) continue;
-      // calculate new g_cost, neighbor'cost is only step cost for now
-      float g_cost = current.g_cost + neighbor.g_cost;
-      float h_cost = CalculateHValue(neighbor.i);
-
-      auto iter = std::find(open_list.begin(), open_list.end(), neighbor);
-      if(iter != open_list.end()){ // neighbor already in open list
-        if(g_cost < iter->g_cost){
-          // update the cost value of the index in open list
-          iter->g_cost = g_cost;
-          parents[iter->i] = current.i;
-        }
-      } else {
-        neighbor.g_cost = g_cost;
-        neighbor.h_cost = h_cost;
-        parents[neighbor.i] = current.i;
-        open_list.push_back(neighbor);
-      }
-    }
-  }
-  return !path_.empty();
-}
-
-void PathPlanner::ConstructFinalPath(int current, std::unordered_map<int,int> &parents) {
-  // Create path_found vector
-  do
-  {
-    path_.push_back(current);
-    current = parents[current];
-  } while (current != start_index_);
-
-  path_.push_back(start_index_);
-
-  //reverse the founded path
-  std::reverse(path_.begin(),path_.end());
-}
-
 
 

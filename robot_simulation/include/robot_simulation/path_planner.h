@@ -5,13 +5,7 @@
 #include <set>
 #include <unordered_map>
 #include <algorithm>
-
-struct Point
-{
-  float x;
-  float y;
-  float z;
-};
+#include <robot_simulation/expand_visual.h>
 
 class Index {
   public:
@@ -29,7 +23,7 @@ public:
 
   // PathPlanner constructor
   PathPlanner(int start, int goal, std::vector<int> &costmap, 
-              int width, int height, float resolution, Point origin);
+              int width, int height, float resolution, ExpandVisual *ev);
   
   std::vector<Index> findNeighbors(int index);
   float CalculateHValue(int index);
@@ -42,12 +36,13 @@ private:
   float resolution_;
   int costmap_width_;
   int costmap_height_;
-  Point origin_; // map's origin with reference to world 
+  // Point origin_; // map's origin with reference to world 
   // start and goal
   int start_index_;
   int goal_index_;
   // founded path
   std::vector<int> path_;
+  ExpandVisual *expandviz_;
 };
 
 #endif

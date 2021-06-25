@@ -11,7 +11,7 @@
 
   <!-- Determine whether to run Rviz or not & set Rviz config file-->
   <arg name="use_rviz" default="true" />
-  <arg name="rvizconfig" default="$(find unit2_pp)/rviz/unit2_exercises.rviz"/>
+  <arg name="rvizconfig" default="$(find robot_simulation)/rviz/Cpp_ND.rviz"/>
   <!-- Launching Rviz -->
   <node if="$(arg use_rviz)" name="rviz" pkg="rviz" type="rviz" respawn="false" args="-d $(arg rvizconfig)"/>
 
