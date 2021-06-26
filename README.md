@@ -1,5 +1,7 @@
 <h1>CppND-Capstone-Project: Robot Simulation</h1>
 
+![path_planner](pic_path_planner_in_virtual_desktop.png)
+
 - [1. About The Project](#1-about-the-project)
 - [2. Main Components](#2-main-components)
 - [3. Dependencies](#3-dependencies)
@@ -29,11 +31,11 @@ This project simulates robot path planning process using ROS and Gazebo simulati
   
   ROS **Desktop-Full** version is recommended since we need gazebo as simulator and Rviz as visulizer
 
-- [catkin_tools][catkin-tools-doc] - Optional
+- [catkin_tools][catkin-tools-doc]
   
   Installation: make sure ROS is installed on your system (or ROS repo is added into the software source)
   ```bash
-  python-catkin-tools
+  sudo apt install python-catkin-tools
   ```
 
 ## 4. How To Build
@@ -58,13 +60,38 @@ This project simulates robot path planning process using ROS and Gazebo simulati
   git clone https://github.com/vacuum136/CppND-Capstone.git
   ```
 
-- Step 3: build the package
+- Step 3: Fixup Udacity Vitual Deskptop Environment Build Error
+  
+  > CMake Error at /opt/ros/kinetic/share/costmap_2d/cmake/costmap_2dConfig.cmake:113 (message):  
+  Project 'costmap_2d' specifies '/usr/include/hdf5/openmpi' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '${{prefix}}//usr/include/hdf5/openmpi'.  Check the website 'http://wiki.ros.org/costmap_2d' for information and consider reporting the problem. 
+
+  ```bash
+  # Reason: dependencies confict. Install the following package with specified version.
+  sudo apt install libvtk6.2=6.2.0+dfsg1-10build1+debian11.1+osrf1 libpcl-dev libvtk6-dev=6.2.0+dfsg1-10build1+debian11.1+osrf1 libvtk6-java=6.2.0+dfsg1-10build1+debian11.1+osrf1 tcl-vtk6=6.2.0+dfsg1-10build1+debian11.1+osrf1 python-vtk6=6.2.0+dfsg1-10build1+debian11.1+osrf1 libvtk6.2-qt=6.2.0+dfsg1-10build1+debian11.1+osrf1  libvtk6-qt-dev=6.2.0+dfsg1-10build1+debian11.1+osrf1 vtk6=6.2.0+dfsg1-10build1+debian11.1+osrf1
+  ```
+
+- Step 4: build the package
 
   ```bash
   catkin build
   ```
 
 ## 5. Run Simulation
+
+> **Warning: Runtime Error in Vitural Desktop Environment**  
+> Traceback (most recent call last):  
+  File "/opt/ros/kinetic/share/xacro/xacro.py", line 55, in <module> import xacro  
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/xacro/__init__.py", line 35, in <module> import glob  
+  File "/root/miniconda3/lib/python3.7/glob.py", line 4, in <module> import re  
+  ModuleNotFoundError: No module named 're'  
+  **Solution**
+  >```bash
+> #Step 1: edit .bashrc file and delete "/root/miniconda3/bin:". The PATH should look as below:
+> export PATH=/opt/utils/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/VirtualGL/bin:/opt/TurboVNC/bin:/opt/swift/swift-4.0.3-RELEASE-ubuntu16.04/usr/bin
+> # Step 2
+> source ./~bashrc
+> ```  
+
 
 > **Notice**: make sure you've set ROS's evironment properly and add the CppND workspace into the ROS environment  
 > Option 1: set everytime you launch a terminal
@@ -80,11 +107,14 @@ Step 1: launch gazebo simulator
 ```bash
 roslaunch robot_simulation robot_gazebo.launch
 ```
+![gazebo](pic_gazebo_overview.png)
 
 Step 2: launch path planner node
+
 ```bash
 roslaunch robot_simulation robot_planner.launch
 ``` 
+![rviz](pic_rviz_overview.png)
 
 Then you can simulate the path planning in Rviz. Using the "2D Navi Goal" to set the goal for robot. Once the goal is set, a visualized expanding process will start. After it reachs the goal, the robot will then move along with the founded path to the goal. 
 
