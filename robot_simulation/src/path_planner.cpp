@@ -25,12 +25,11 @@ bool PathPlanner::AStarSearch(){
     // marked this index checked
     close_list.insert(current.i);
     expandviz_->setColor(current.i, "pale_yellow");
-    
+    // wait 1 sec otherwise pointcloud msg failed to public. Workaround need in the future.
     if(wait){
       sleep(1);
       wait = false;
     }
-
     if(current.i == goal_index_){
       ConstructFinalPath(current.i, parents);
       break;
@@ -54,7 +53,7 @@ bool PathPlanner::AStarSearch(){
         neighbor.g_cost = g_cost;
         neighbor.h_cost = h_cost;
         parents[neighbor.i] = current.i;
-        open_list.push_back(neighbor);
+        open_list.push_back(std::move(neighbor));
         expandviz_->setColor(neighbor.i,"orange");
       }
     }
