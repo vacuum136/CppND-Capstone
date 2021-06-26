@@ -29,7 +29,7 @@ int main(int argc, char** argv)
   ros::init(argc, argv, "path_planning_service_server");
   ros::NodeHandle nh;
 
-  ros::ServiceServer service = nh.advertiseService<>("/move_base/SrvClientPlugin/make_plan", makePlan);
+  ros::ServiceServer service = nh.advertiseService("/move_base/SrvClientPlugin/make_plan", makePlan);
   ROS_INFO("Path planning server: Path Planning is ready");
   ros::spin();
   

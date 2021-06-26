@@ -1,5 +1,5 @@
-#include <ros/ros.h>
 #include "robot_simulation/path_planner.h"
+
 
 PathPlanner::PathPlanner
   (int start, int goal, std::vector<int> &costmap, 
@@ -13,12 +13,9 @@ bool PathPlanner::AStarSearch(){
   // store the index checked
   std::set<int> close_list{};
   // map between index and it's parents
-  std::unordered_map<int, int> parents{};
-  
+  std::unordered_map<int, int> parents{};  
   open_list.emplace_back(start_index_, 0.f);
-
-  ROS_INFO("Path planner: initialization done");
-
+  bool wait = true;
   // loop as long as there is index in open list
   while(!open_list.empty()){
     // get the index with lowest cost 
@@ -28,11 +25,15 @@ bool PathPlanner::AStarSearch(){
     // marked this index checked
     close_list.insert(current.i);
     expandviz_->setColor(current.i, "pale_yellow");
+    // wait 1 sec otherwise pointcloud msg failed to public. Workaround need in the future.
+    if(wait){
+      sleep(1);
+      wait = false;
+    }
     if(current.i == goal_index_){
       ConstructFinalPath(current.i, parents);
       break;
-    }  
-    
+    }
     std::vector<Index> neighbors = findNeighbors(current.i);
 
     for(Index &neighbor : neighbors){
@@ -52,11 +53,10 @@ bool PathPlanner::AStarSearch(){
         neighbor.g_cost = g_cost;
         neighbor.h_cost = h_cost;
         parents[neighbor.i] = current.i;
-        open_list.push_back(neighbor);
+        open_list.push_back(std::move(neighbor));
         expandviz_->setColor(neighbor.i,"orange");
       }
     }
-    sleep(1);
   }
   return !path_.empty();
 }

@@ -1,12 +1,29 @@
-# CppND-Capstone-Project: Robot Simulation
+<h1>CppND-Capstone-Project: Robot Simulation</h1>
 
-## About The Project
+- [1. About The Project](#1-about-the-project)
+- [2. Main Components](#2-main-components)
+- [3. Dependencies](#3-dependencies)
+- [4. How To Build](#4-how-to-build)
+- [5. Run Simulation](#5-run-simulation)
+- [6. Rubric Points](#6-rubric-points)
+- [7. Acknowledgements](#7-acknowledgements)
+
+## 1. About The Project
 
 This project simulates robot path planning process using ROS and Gazebo simulation environment, featuring a visulization of the expanding process of the algorithm. It helps the algorithm learner to understand intuitively how the path planning algorithm really works. Currently only A* algorithm implemented, more such as Dijkstra, can be added so that performance between them can be compared.
 
-This Project inspired by XXX, which mainly buidt in Python. https://github.com/rfzeg/path_planning_intro
+## 2. Main Components
 
-## Dependencies for Running Locally
+**robot_simulation**: the package that my contribution focus on in this project  
+  - path_planner_server: a ROS service server that response with a path after getting the request of a global path from the client
+  - path_planner: called by the server and plan the path
+  - expand_visual: visualize the expanding process
+
+**pp_msgs**: a customized ROS srv file.  
+**srv_client_plugin**: A ROS global planner that creates service request for a plan and forwards the response to the move_base global planner module.  
+**turtlebot3_description**: a robot model.  
+
+## 3. Dependencies
 
 - ROS ([Noetic][ros-noetic-installation] for Ubuntu 20.04 or [Kinetic][ros-kinetic-installation] for Ubuntu 16.04)
   
@@ -19,98 +36,95 @@ This Project inspired by XXX, which mainly buidt in Python. https://github.com/r
   python-catkin-tools
   ```
 
-## Installation
+## 4. How To Build
 
-Step 1: Initialize a catkin working space
+- Step 1: Initialize a catkin working space
+
+  ```bash
+  mkdir CppND_ws    #take any name you like
+  cd CppND_ws
+  mkdir src
+  catkin init
+  ```
+
+- Step 2: Clone the package
+
+  ```bash
+  cd src
+  # for ROS kinetic
+  git clone -b kinetic https://github.com/vacuum136/CppND-Capstone.git
+
+  # for ROS noetic
+  git clone https://github.com/vacuum136/CppND-Capstone.git
+  ```
+
+- Step 3: build the package
+
+  ```bash
+  catkin build
+  ```
+
+## 5. Run Simulation
+
+> **Notice**: make sure you've set ROS's evironment properly and add the CppND workspace into the ROS environment  
+> Option 1: set everytime you launch a terminal
+> ```bash
+> # Assuming you're using bash shell
+> source /opt/ros/[ros-version]/setup.bash
+> source .../CppND_ws/devel/setup.bash
+> ```
+> Option 2: put the above two line into the .bashrc file and save.
+
+Step 1: launch gazebo simulator
 
 ```bash
-mkdir CppND_ws    #take any name you like
-cd CppND_ws
-mkdir src
-catkin init
+roslaunch robot_simulation robot_gazebo.launch
 ```
 
-Step 2: Clone the package
-
+Step 2: launch path planner node
 ```bash
-cd src
-git clone https://github.com/vacuum136/CppND-Capstone.git
-```
+roslaunch robot_simulation robot_planner.launch
+``` 
 
-Step 3: build the package
+Then you can simulate the path planning in Rviz. Using the "2D Navi Goal" to set the goal for robot. Once the goal is set, a visualized expanding process will start. After it reachs the goal, the robot will then move along with the founded path to the goal. 
 
-```bash
-catkin build
-```
+## 6. Rubric Points  
 
+> Loops, Functions, I/O  
+> - The project demonstrates an understanding of C++ functions and control structures.
 
-> **Warning:** This command will take a while because it inserts ~3M rows in the db and [creates indexes to perform efficient searches](https://rdkit.org/docs/Cartridge.html), a rough estimate being between 15 minutes and an hour.
+- while loop: path_planner.cpp line 20-60
+- for loop: path_planner.cpp line 39-59
+- do-while loop: path_planner.cpp line 66-70
 
-Lastly, start the CppND-Capstone service:
+> Object Oriented Programming  
+> - The project uses Object Oriented Programming techniques. 
+> - Classes use appropriate access specifiers for class members.
+> - Class constructors utilize member initialization lists. 
+> - Classes abstract implementation details from their interfaces.
+> - Classes encapsulate behavior
 
-```bash
-docker-compose up service
-```
+- see class PathPlanner and ExpandVisual
+- see publich and private members in class PathPlaner and ExpendVisual
+- initialization lists see PathPlanner Constructor and ExpandVisual Constructor
+- PathPlanner::getPath(), see path_planner.h line 66
 
-Once these commands are ran, you are ready to test the endpoints at http://localhost:8000/swagger/ui .
+> Memory Management  
+> - The project makes use of references in function declarations. 
+> - The project uses move semantics to move data, instead of copying it, where possible.
+> - The project uses smart pointers instead of raw pointers.
 
-<!-- USAGE EXAMPLES -->
-## Usage
+- one of the PathPlanner's contructor's parameter is a reference to the costmap
+- using move semantics when pushing back founed neighbor cell into open list. See path_planner.cpp line 56
+- sensor_msg/CloudPoint2 is a share_point of point cloud vector. See expand_visual.cpp line 32.
 
-See usage through Swagger demo here https://drive.google.com/file/d/1FKh3-N4KWvVEz7NPFmMDALWu-BzYbaHP/view?usp=sharing .
+## 7. Acknowledgements
 
-<!-- ROADMAP -->
-## Roadmap
-
-See the [open issues](https://github.com/vacuum136/CppND-Capstone/issues) for a list of proposed features (and known issues).
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-Make sure to format your code properly with `make format`.
-
-<!-- LICENSE -->
-## License
-
-Distributed under the Apache-2.0 License. See `LICENSE` for more information.
+- This Project inspired by the path planning tutorial by [rfzeg](https://github.com/rfzeg/path_planning_intro), which basically built with Python.
+- Thanks [turtlebot3](https://github.com/ROBOTIS-GIT/turtlebot3) for the robot model.
 
 
 
-<!-- CONTACT -->
-## Contact
-
-Michel ML - [@vacuum136](https://github.com/vacuum136) - vacuum136@gmail.com
-
-Project Link: [https://github.com/vacuum136/CppND-Capstone](https://github.com/vacuum136/CppND-Capstone)
-
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-
-Thank you to all contributors of libraries and tools used in this project.
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/vacuum136/CppND-Capstone.svg?style=for-the-badge
-[contributors-url]: https://github.com/vacuum136/CppND-Capstone/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/vacuum136/CppND-Capstone.svg?style=for-the-badge
-[forks-url]: https://github.com/vacuum136/CppND-Capstone/network/members
-[stars-shield]: https://img.shields.io/github/stars/vacuum136/CppND-Capstone.svg?style=for-the-badge
-[stars-url]: https://github.com/vacuum136/CppND-Capstone/stargazers
-[issues-shield]: https://img.shields.io/github/issues/vacuum136/CppND-Capstone.svg?style=for-the-badge
-[issues-url]: https://github.com/vacuum136/CppND-Capstone/issues
-[license-shield]: https://img.shields.io/github/license/vacuum136/CppND-Capstone.svg?style=for-the-badge
-[license-url]: https://github.com/vacuum136/CppND-Capstone/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://www.linkedin.com/in/michelmoreau1/
-[product-screenshot]: CppND-Capstone.png
 
 [catkin-tools-doc]: https://catkin-tools.readthedocs.io/en/latest/installing.html
 [ros-noetic-installation]: http://wiki.ros.org/noetic/Installation/Ubuntu
