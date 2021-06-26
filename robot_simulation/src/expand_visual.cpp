@@ -3,6 +3,7 @@
 ExpandVisual::ExpandVisual
   (std::vector<int> &costmap, float resolution, Point origin, int start, int goal, int width):
   costmap_(costmap), resolution_(resolution), origin_(origin), start_(start), goal_(goal), width_(width){
+    //initial the hash table [color name, #ARGB]
     color_ = {{"green",4278255360}, //#FF00FF00
               {"red",4294901760},   //#FFFF0000
               {"blue",4278190335},  //#FF0000FF
@@ -23,21 +24,21 @@ void ExpandVisual::init_points(){
     newpoint.z = p.z;
     newpoint.rgba = 0;
     cloud_.points.push_back(newpoint);
-    //points_.push_back(std::pair<Point,int>{Point,0});
   }
   cloud_.points[start_].z = 0.1;
   cloud_.points[start_].rgba = color_["blue"];
   cloud_.points[goal_].z = 0.1;
   cloud_.points[goal_].rgba = color_["red"];
+  msg_ = cloud_.makeShared();
+  msg_->header.frame_id = frame_;
 }
 
 void ExpandVisual::setColor(int index, std::string color){
   if(index != start_ && index != goal_)
-    cloud_.points[index].rgba = color_[color];
-  pcl::PointCloud<pcl::PointXYZRGBA>::Ptr msg = cloud_.makeShared();
-  msg->header.frame_id = frame_;
-  //msg->header.stamp = ros::Time::now();
-  pub_.publish(msg);
+    msg_->points[index].rgba = color_[color];
+  //pcl::PointCloud<pcl::PointXYZRGBA>::Ptr msg = cloud_.makeShared();
+  pcl_conversions::toPCL(ros::Time::now(),msg_->header.stamp);
+  pub_.publish(msg_);
 }
 
 Point ExpandVisual::indexToWorld(int index){
