@@ -10,7 +10,7 @@ ExpandVisual::ExpandVisual
               {"pale_yellow",4293918464},
               {"lime_green",4284802916},
               {"orange",4294944000}};
-    pub_ = nh_.advertise<pcl::PointCloud<pcl::PointXYZRGBA>>("/expand_visual", 1000);
+    pub_ = nh_.advertise<pcl::PointCloud<pcl::PointXYZRGBA>>("/expand_visual", 100);
     init_points();
   }
 
@@ -38,6 +38,9 @@ void ExpandVisual::setColor(int index, std::string color){
     msg_->points[index].rgba = color_[color];
   //pcl::PointCloud<pcl::PointXYZRGBA>::Ptr msg = cloud_.makeShared();
   pcl_conversions::toPCL(ros::Time::now(),msg_->header.stamp);
+  while(pub_.getNumSubscribers() == 0){
+    ros::Duration(0.1).sleep();
+  }
   pub_.publish(msg_);
 }
 

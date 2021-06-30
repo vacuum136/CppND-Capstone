@@ -1,6 +1,6 @@
 <h1>CppND-Capstone-Project: Robot Simulation</h1>
 
-![path_planner](pic_path_planner_overview.png)
+![path_planner](Capstone_overview.gif)
 
 - [1. About The Project](#1-about-the-project)
 - [2. Main Components](#2-main-components)

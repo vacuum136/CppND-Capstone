@@ -26,10 +26,10 @@ bool PathPlanner::AStarSearch(){
     close_list.insert(current.i);
     expandviz_->setColor(current.i, "pale_yellow");
     // wait 1 sec otherwise pointcloud msg failed to public. Workaround need in the future.
-    if(wait){
-      sleep(1);
-      wait = false;
-    }
+    // if(wait){
+    //   sleep(1);
+    //   wait = false;
+    // }
     if(current.i == goal_index_){
       ConstructFinalPath(current.i, parents);
       break;
