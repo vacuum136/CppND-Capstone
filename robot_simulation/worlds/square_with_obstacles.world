@@ -1,3 +1,4 @@
+<?xml version='1.0'?>
 <sdf version='1.6'>
   <world name='default'>
     <scene>
@@ -126,16 +127,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -161,7 +156,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>0.15 14 1</size>
+              <size>0.2 14 1</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -178,19 +173,15 @@
             </friction>
           </surface>
         </collision>
+
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.15 14 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_barrier_14m/meshes/concrete_barrier_14m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
+
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
@@ -215,7 +206,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>0.15 14 1</size>
+              <size>0.2 14 1</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -234,16 +225,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.15 14 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_barrier_14m/meshes/concrete_barrier_14m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -269,7 +254,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>0.15 14 1</size>
+              <size>0.2 14 1</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -288,16 +273,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.15 14 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_barrier_14m/meshes/concrete_barrier_14m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -323,7 +302,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>0.15 14 1</size>
+              <size>0.2 14 1</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -342,16 +321,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.15 14 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_barrier_14m/meshes/concrete_barrier_14m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -396,16 +369,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -450,16 +417,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -504,16 +465,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -558,16 +513,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -612,16 +561,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -666,16 +609,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -720,16 +657,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -774,16 +705,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -828,16 +753,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -882,16 +801,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -936,16 +849,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -990,16 +897,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -1044,16 +945,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -1098,16 +993,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -1152,16 +1041,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -1206,16 +1089,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -1260,16 +1137,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -1314,16 +1185,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -1368,16 +1233,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -1422,16 +1281,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -1476,16 +1329,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -1530,16 +1377,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -1584,16 +1425,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -1638,16 +1473,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -1692,16 +1521,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -1746,16 +1569,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -1800,16 +1617,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -1854,16 +1665,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -1908,16 +1713,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -1962,16 +1761,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -2016,16 +1809,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -2070,16 +1857,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -2124,16 +1905,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -2178,16 +1953,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -2196,7 +1965,7 @@
     </model>
     
     <model name='box_38'>
-    <pose frame=''>-1.5 2.5 0.5 0 -0 0</pose>
+      <pose frame=''>-1.5 2.5 0.5 0 -0 0</pose>
       <static>1</static>
       <link name='link'>
         <inertial>
@@ -2232,16 +2001,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -2286,16 +2049,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -2340,16 +2097,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -2394,16 +2145,10 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -2448,21 +2193,20 @@
         </collision>
         <visual name='visual'>
           <geometry>
-            <box>
-              <size>0.999998 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://concrete_cube_1m/meshes/concrete_cube_1m.dae</uri>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
     </model>
+
+    <include>
+     <uri>model://floor_tiles</uri>
+      <pose>0 0 0.0 0 0 0</pose>
+    </include>
   </world>
 </sdf>

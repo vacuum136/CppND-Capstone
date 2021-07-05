@@ -107,7 +107,7 @@ find_package(catkin REQUIRED
 catkin_package(
   INCLUDE_DIRS include
 #  LIBRARIES robot_simulation
-  CATKIN_DEPENDS roscpp pp_msgs std_msgs pcl_ros
+  CATKIN_DEPENDS roscpp pp_msgs std_msgs pcl_ros move_base map_server dwa_local_planner
 #  DEPENDS system_lib
 )
 

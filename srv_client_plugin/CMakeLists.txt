@@ -48,7 +48,7 @@ catkin_package(
     rospy
     tf2
     tf2_ros
-  DEPENDS system_lib
+  # DEPENDS system_lib
 )
 
 ###########

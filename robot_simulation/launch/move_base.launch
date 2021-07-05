@@ -7,7 +7,6 @@
   <arg name="scan_topic" default="/scan"/>
   <arg name="cmd_vel_topic" default="/cmd_vel"/>
   <arg name="odom_topic" default="/odom"/>
- 
 
   <!-- Alternative global planners, default is NavfnROS: -->
   <arg name="base_global_planner" default="srv_client_plugin/SrvClientPlugin"/>
@@ -21,16 +20,16 @@
 
 
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
-    <rosparam file="$(find unit2_pp)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
-    <rosparam file="$(find unit2_pp)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
-    <rosparam file="$(find unit2_pp)/config/local_costmap_params.yaml" command="load" />
-    <rosparam file="$(find unit2_pp)/config/global_costmap_params.yaml" command="load" />
-<!--<rosparam file="$(find unit2_pp)/config/base_local_planner_params.yaml" command="load" /> -->
-    <rosparam file="$(find unit2_pp)/config/dwa_local_planner_params.yaml" command="load" />
+    <rosparam file="$(find robot_simulation)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find robot_simulation)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find robot_simulation)/config/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find robot_simulation)/config/global_costmap_params.yaml" command="load" />
+    <!-- <rosparam file="$(find robot_simulation)/config/base_local_planner_params.yaml" command="load" /> -->
+    <rosparam file="$(find robot_simulation)/config/dwa_local_planner_params.yaml" command="load" />
 
-    <rosparam file="$(find unit2_pp)/config/move_base_params.yaml" command="load" />
-    <rosparam file="$(find unit2_pp)/config/global_planner_params.yaml" command="load" />
-    <rosparam file="$(find unit2_pp)/config/navfn_global_planner_params.yaml" command="load" />
+    <rosparam file="$(find robot_simulation)/config/move_base_params.yaml" command="load" />
+    <rosparam file="$(find robot_simulation)/config/global_planner_params.yaml" command="load" />
+    <rosparam file="$(find robot_simulation)/config/navfn_global_planner_params.yaml" command="load" />
 
 
     <remap from="cmd_vel" to="$(arg cmd_vel_topic)"/>

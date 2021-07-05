@@ -56,6 +56,9 @@
   <depend>pp_msgs</depend>
   <depend>pcl_ros</depend>
   <depend>std_msgs</depend>
+  <depend>map_server</depend>
+  <depend>move_base</depend>
+  <depend>dwa_local_planner</depend>
 
 
   <!-- The export tag contains other, unspecified, tags -->
